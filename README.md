@@ -4,16 +4,7 @@
 
 [![CI](https://github.com/yazi-contrib/starship.yazi/actions/workflows/ci.yml/badge.svg)](https://github.com/yazi-contrib/starship.yazi/actions/workflows/ci.yml) [![Release](https://img.shields.io/github/v/release/yazi-contrib/starship.yazi)](https://github.com/yazi-contrib/starship.yazi/releases) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Screenshots
-
-The default: the path of the hovered file at the left, the owner and the modification time at the right.
-
-![The status line with the path, the owner and the modification time](docs/starship-plain.png)
-
-With `starship = true`, the prompt of starship for the folder is added at the right, here the git branch and
-the state of the repository:
-
-![The status line with a starship prompt at the right](docs/starship-prompt.png)
+![Yazi with starship.yazi: the status line with the path, owner, modification time and a starship prompt](docs/screenshot.png)
 
 ## Dependencies
 
