@@ -1,8 +1,8 @@
 load test_helper
 
 setup() {
-  setup_yazi stats
-  echo 'require("stats"):setup { starship = true }' >"$YAZI_CONFIG_HOME/init.lua"
+  setup_yazi starship
+  echo 'require("starship"):setup { starship = true }' >"$YAZI_CONFIG_HOME/init.lua"
   echo hello >"$WORK/hello.txt"
 }
 

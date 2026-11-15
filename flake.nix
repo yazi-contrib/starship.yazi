@@ -1,5 +1,5 @@
 {
-  description = "stats.yazi - Yazi plugin";
+  description = "starship.yazi - Yazi plugin";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -13,7 +13,7 @@
       in
       {
         devShells.default = pkgs.mkShell {
-          name = "stats-yazi";
+          name = "starship-yazi";
           packages = with pkgs; [
             bats
             tmux

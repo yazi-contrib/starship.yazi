@@ -3,8 +3,8 @@
 ---
 --- Setup, in init.lua:
 ---
----   require("stats"):setup()
----   require("stats"):setup {
+---   require("starship"):setup()
+---   require("starship"):setup {
 ---     starship = true,                          -- run `starship prompt` for the folder, off by default
 ---     starship_config = "~/.config/starship/yazi.toml",  -- its own STARSHIP_CONFIG, optional
 ---     owner = true,                             -- the owner and the group
