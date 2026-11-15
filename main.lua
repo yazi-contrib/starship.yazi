@@ -25,6 +25,13 @@ local get_state = ya.sync(function(state)
 	return state
 end)
 
+
+
+local expand_home = function(path)
+	local home = os.getenv("HOME") or ""
+	return (path:gsub("^~", home))
+end
+
 local emit_state = function(state)
 	local cwd = cx.active.current.cwd
 	state.cwd = cwd
@@ -35,10 +42,11 @@ local emit_state = function(state)
 	})
 end
 
-local expand_home = function(path)
-	local home = os.getenv("HOME") or ""
-	return (path:gsub("^~", home))
-end
+-- The code that runs async, as `entry` does, has a Lua state of its own, where `setup` has not run, so
+-- it asks the main state for the option that it needs. `ya.sync` runs its function in the main state
+local get_starship_config = ya.sync(function(state)
+	return state.starship_config
+end)
 
 -- the prompt of starship for the folder, kept in the state
 local load_state = function(cwd)
@@ -47,8 +55,9 @@ local load_state = function(cwd)
 		:env("STARSHIP_SHELL", "")
 		:arg("prompt")
 		:cwd(cwd)
-	if config.starship_config then
-		command = command:env("STARSHIP_CONFIG", expand_home(config.starship_config))
+	local starship_config = get_starship_config()
+	if starship_config then
+		command = command:env("STARSHIP_CONFIG", expand_home(starship_config))
 	end
 
 	local output = command:output()
@@ -122,6 +131,8 @@ return {
 		for k, v in pairs(opts or {}) do
 			config[k] = v
 		end
+		-- for the code that runs async, see get_starship_config
+		state.starship_config = config.starship_config
 
 		-- left status
 		Status.name = get_path
